@@ -11,7 +11,8 @@ class ProductProvider extends Component {
         modalProduct: detailProduct,
         cartSubTotal:0,
         cartTax:0,
-        cartTotal: 0
+        cartTotal: 0,
+        search: ''
     }
 
     getItem = (id) => {
@@ -165,6 +166,18 @@ class ProductProvider extends Component {
         })
     } //Call this method in addToCart method 
 
+    // Search Method
+    updateSearch = (event) =>{
+        this.setState(()=>{
+             return{
+                  search: event
+             }
+         },()=>{
+             
+            // this.setProducts()
+         })
+    }
+
     render() {
         return (
             <ProductContext.Provider value={{
@@ -176,7 +189,8 @@ class ProductProvider extends Component {
                 increment:this.increment,
                 decrement:this.decrement,
                 removeItem:this.removeItem,
-                clearCart:this.clearCart
+                clearCart:this.clearCart,
+                updateSearch:this.updateSearch
             }}>
                 {/* <button onClick={this.tester}>Test</button> */}
                 {this.props.children}
